@@ -9,7 +9,7 @@ public abstract class TwoOperandsCommand extends AbstractCommand{
     private BigDecimal secondNumber;
 
     @Override
-    public int requiredOprands() {
+    public int requiredOperands() {
         return 2;
     }
 

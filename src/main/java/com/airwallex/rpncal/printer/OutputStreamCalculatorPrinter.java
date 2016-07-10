@@ -1,8 +1,8 @@
 package com.airwallex.rpncal.printer;
 
 import com.airwallex.rpncal.calculator.Calculator;
-import com.airwallex.rpncal.command.CommandFactory;
 import com.airwallex.rpncal.command.Command;
+import com.airwallex.rpncal.command.CommandFactory;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -13,6 +13,9 @@ import java.util.List;
 
 import static com.airwallex.rpncal.Constant.PRINT_SCALE;
 
+/**
+ * Print stack to output stream writer and print error messages to console
+ */
 public class OutputStreamCalculatorPrinter implements CalculatorPrinter {
     private final static DecimalFormat format = new DecimalFormat("#0.##########");
 

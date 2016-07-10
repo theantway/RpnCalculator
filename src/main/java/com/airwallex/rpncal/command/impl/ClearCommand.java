@@ -6,11 +6,14 @@ import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/**
+ * Command for clear stack
+ */
 public class ClearCommand extends AbstractCommand{
     private Deque<BigDecimal> clearedValues = new ArrayDeque<>();
 
     @Override
-    public int requiredOprands() {
+    public int requiredOperands() {
         return 0;
     }
 

@@ -1,11 +1,14 @@
 package com.airwallex.rpncal.command.impl;
 
-import com.airwallex.rpncal.calculator.Calculator;
 import com.airwallex.rpncal.Constant;
+import com.airwallex.rpncal.calculator.Calculator;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * Command to calculate sqrt of number, this implementation using Babylonian method.
+ */
 public class SqrtCommand extends AbstractCommand{
     private static final BigDecimal TWO = new BigDecimal("2");
     private static final int MAX_ITERATION_TIMES = 100;
@@ -13,7 +16,7 @@ public class SqrtCommand extends AbstractCommand{
     private BigDecimal number;
 
     @Override
-    public int requiredOprands() {
+    public int requiredOperands() {
         return 1;
     }
 

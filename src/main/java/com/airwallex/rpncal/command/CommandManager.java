@@ -9,6 +9,9 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
 
+/**
+ * Execute commands on calculator
+ */
 public class CommandManager {
     private final Deque<Command> commands = new ArrayDeque<>();
     private final CalculatorPrinter printer;
@@ -37,7 +40,7 @@ public class CommandManager {
             return true;
         }
 
-        int requiredOprands = command.requiredOprands();
+        int requiredOprands = command.requiredOperands();
         if (requiredOprands > calculator.size()) {
             printer.printInsufficientError(command);
             return false;

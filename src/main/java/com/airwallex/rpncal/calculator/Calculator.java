@@ -7,25 +7,48 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * The Calculator class has a stack of current numbers, all the operations are based on these numbers.
+ */
 public class Calculator {
     private final Deque<BigDecimal> stack = new ArrayDeque<>();
 
+    /**
+     * check if there has numbers on stack
+     * @return
+     */
     public boolean hasMore() {
         return stack.size() > 0;
     }
 
+    /**
+     * popup the top of the stack
+     * @return
+     */
     public BigDecimal pop() {
         return stack.pop();
     }
 
+    /**
+     * push a new number to stack
+     * @param number
+     */
     public void push(BigDecimal number) {
         stack.push(number);
     }
 
+    /**
+     * return current stack
+     * @return
+     */
     public List<BigDecimal> stack() {
         return stack.stream().collect(toList());
     }
 
+    /**
+     * return size of current stack
+     * @return
+     */
     public int size() {
         return stack.size();
     }

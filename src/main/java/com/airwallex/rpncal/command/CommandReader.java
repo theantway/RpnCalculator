@@ -6,8 +6,12 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Read command from input and parse into list of Commands
+ */
 public class CommandReader {
     private static final Logger logger = LoggerFactory.getLogger(CommandReader.class);
 
@@ -18,9 +22,9 @@ public class CommandReader {
     }
 
     /**
-     * @return returns command for MOVE, LEFT, RIGHT, REPORT and PLACE in normal case.
-     * returns NoopCommand for invalid command or exception
-     * returns PowerOffCommand when no more data available in reader.
+     * read a line and parse into list of Commands
+     * @return list of Commands
+     * @throws IOException
      */
     public List<Command> nextCommands() throws IOException {
         String line = null;
@@ -39,6 +43,11 @@ public class CommandReader {
         }
     }
 
+    /**
+     * parse line, split by whitespace and return parsed Commands
+     * @param line
+     * @return
+     */
     private List<Command> parseLine(String line) {
         List<Command> commands = new ArrayList<>();
         int pos;
