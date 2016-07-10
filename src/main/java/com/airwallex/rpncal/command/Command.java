@@ -10,7 +10,7 @@ public interface Command {
      * execute this command on given calculator
      * @param calculator
      */
-    void execute(Calculator calculator);
+    boolean execute(Calculator calculator);
 
     /**
      * undo last command on this calculator

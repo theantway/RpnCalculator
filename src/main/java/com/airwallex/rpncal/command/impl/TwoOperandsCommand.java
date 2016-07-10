@@ -5,8 +5,8 @@ import com.airwallex.rpncal.calculator.Calculator;
 import java.math.BigDecimal;
 
 public abstract class TwoOperandsCommand extends AbstractCommand{
-    private BigDecimal firstNumber;
-    private BigDecimal secondNumber;
+    protected BigDecimal firstNumber;
+    protected BigDecimal secondNumber;
 
     @Override
     public int requiredOperands() {
@@ -14,12 +14,14 @@ public abstract class TwoOperandsCommand extends AbstractCommand{
     }
 
     @Override
-    public void execute(Calculator calculator) {
+    public boolean execute(Calculator calculator) {
         secondNumber = calculator.pop();
         firstNumber = calculator.pop();
 
         BigDecimal result = calculate(firstNumber, secondNumber);
         calculator.push(result);
+
+        return true;
     }
 
     protected abstract BigDecimal calculate(BigDecimal firstNumber, BigDecimal secondNumber);

@@ -20,8 +20,9 @@ public class PlaceCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(Calculator calculator) {
+    public boolean execute(Calculator calculator) {
         calculator.push(number);
+        return true;
     }
 
     @Override

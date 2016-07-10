@@ -2,7 +2,7 @@ package com.airwallex.rpncal.printer;
 
 import com.airwallex.rpncal.calculator.Calculator;
 import com.airwallex.rpncal.command.Command;
-import com.airwallex.rpncal.command.CommandFactory;
+import com.airwallex.rpncal.reader.CommandFactory;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;

@@ -28,6 +28,13 @@ public class Calculator {
     public BigDecimal pop() {
         return stack.pop();
     }
+    /**
+     * return the top of the stack and DO NOT remove it from stack
+     * @return
+     */
+    public BigDecimal peek() {
+        return stack.peek();
+    }
 
     /**
      * push a new number to stack

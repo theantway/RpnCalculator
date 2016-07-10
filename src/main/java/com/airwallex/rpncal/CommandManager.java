@@ -1,6 +1,7 @@
-package com.airwallex.rpncal.command;
+package com.airwallex.rpncal;
 
 import com.airwallex.rpncal.calculator.Calculator;
+import com.airwallex.rpncal.command.Command;
 import com.airwallex.rpncal.command.impl.UndoCommand;
 import com.airwallex.rpncal.printer.CalculatorPrinter;
 
@@ -46,8 +47,10 @@ public class CommandManager {
             return false;
         }
 
-        commands.push(command);
-        command.execute(calculator);
+        //only add command to undo stack if it executed successful
+        if (command.execute(calculator)) {
+            commands.push(command);
+        }
 
         return true;
     }

@@ -18,10 +18,12 @@ public class ClearCommand extends AbstractCommand{
     }
 
     @Override
-    public void execute(Calculator calculator) {
+    public boolean execute(Calculator calculator) {
         while (calculator.hasMore()) {
             clearedValues.push(calculator.pop());
         }
+
+        return true;
     }
 
     @Override

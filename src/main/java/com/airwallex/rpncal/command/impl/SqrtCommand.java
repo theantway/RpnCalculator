@@ -21,11 +21,13 @@ public class SqrtCommand extends AbstractCommand{
     }
 
     @Override
-    public void execute(Calculator calculator) {
+    public boolean execute(Calculator calculator) {
         number = calculator.pop();
 
         BigDecimal result = sqrt(number, Constant.NUMBER_OF_DECIMAL_PLACES);
         calculator.push(result);
+
+        return true;
     }
 
     @Override

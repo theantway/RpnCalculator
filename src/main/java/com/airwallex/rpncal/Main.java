@@ -2,10 +2,9 @@ package com.airwallex.rpncal;
 
 import com.airwallex.rpncal.calculator.Calculator;
 import com.airwallex.rpncal.command.Command;
-import com.airwallex.rpncal.command.CommandManager;
-import com.airwallex.rpncal.command.CommandReader;
 import com.airwallex.rpncal.printer.CalculatorPrinter;
 import com.airwallex.rpncal.printer.OutputStreamCalculatorPrinter;
+import com.airwallex.rpncal.reader.CommandReader;
 
 import java.io.*;
 import java.nio.charset.Charset;

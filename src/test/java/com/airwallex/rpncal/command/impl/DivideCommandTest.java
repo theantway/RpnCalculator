@@ -32,6 +32,22 @@ public class DivideCommandTest {
         assertThat(calculator.stack(), equalTo(numberList("3", "10")));
     }
 
+    public void should_print_error_if_divide_by_zero() {
+        DivideCommand command = new DivideCommand();
+        Calculator calculator = calculatorWithStack("10", "0");
+
+        command.execute(calculator);
+        assertThat(calculator.stack(), equalTo(numberList("0", "10")));
+    }
+
+    public void should_return_0_if_divide_zero() {
+        DivideCommand command = new DivideCommand();
+        Calculator calculator = calculatorWithStack("0", "10");
+
+        command.execute(calculator);
+        assertThat(calculator.stack(), equalTo(numberList("0")));
+    }
+
     public void should_use_plain_numbers() {
         DivideCommand command = new DivideCommand();
         Calculator calculator = calculatorWithStack("1000", "10");

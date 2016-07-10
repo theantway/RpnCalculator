@@ -10,7 +10,8 @@ public class NoopCommand extends AbstractCommand{
     }
 
     @Override
-    public void execute(Calculator calculator) {
+    public boolean execute(Calculator calculator) {
+        return true;
     }
 
     @Override

@@ -44,3 +44,4 @@ Assumptions
 1. There has no requirements for invalid input, so I use slf4j to print logs, currently print to console.
 2. The application can read from file if there has a argument when execute application, else read from console.
     The application will read until EOF of the input, or Ctrl+D if read from console.
+3. When divide by Zero, ignore the divide command and print error on log
