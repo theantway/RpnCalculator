@@ -20,7 +20,7 @@ public class CommandReaderTest {
         List<Command> commands = reader.nextCommands();
 
         assertThat(commands.size(), Is.is(1));
-        assertThat(commands.get(0).getPos(), Is.is(0));
+        assertThat(commands.get(0).getPositionOfInput(), Is.is(0));
     }
 
     public void should_parse_commands_case_insensitive() throws IOException {
@@ -30,9 +30,9 @@ public class CommandReaderTest {
 
         assertThat(commands.size(), Is.is(2));
         assertThat(commands.get(0), instanceOf(ClearCommand.class));
-        assertThat(commands.get(0).getPos(), Is.is(0));
+        assertThat(commands.get(0).getPositionOfInput(), Is.is(0));
         assertThat(commands.get(1), instanceOf(UndoCommand.class));
-        assertThat(commands.get(1).getPos(), Is.is(6));
+        assertThat(commands.get(1).getPositionOfInput(), Is.is(6));
     }
 
     public void should_ignore_whitespaces() throws IOException {

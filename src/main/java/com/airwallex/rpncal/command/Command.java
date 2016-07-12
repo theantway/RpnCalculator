@@ -22,14 +22,14 @@ public interface Command {
      * get position of this command in input
      * @return
      */
-    int getPos();
+    int getPositionOfInput();
 
     /**
      * set position of this command in input
      * @param pos
      * @return
      */
-    Command setPos(int pos);
+    Command setPositionOfInput(int pos);
 
     /**
      * how manu operands does this command requires

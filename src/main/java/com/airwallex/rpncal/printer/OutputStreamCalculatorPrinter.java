@@ -26,7 +26,7 @@ public class OutputStreamCalculatorPrinter implements CalculatorPrinter {
     }
 
     @Override
-    public void print(Calculator calculator) throws IOException {
+    public void printCalculatorStack(Calculator calculator) throws IOException {
         StringBuilder builder = new StringBuilder("stack: ");
 
         List<BigDecimal> numbers = calculator.stack();
@@ -44,12 +44,13 @@ public class OutputStreamCalculatorPrinter implements CalculatorPrinter {
     }
 
     @Override
-    public void printInsufficientError(Command command) throws IOException {
+    public void printCommandError(Command command, String errorMessage) throws IOException {
         writer.append("operator ")
                 .append(CommandFactory.commandToString(command))
                 .append(" (position: ")
-                .append(String.valueOf(command.getPos()))
-                .append("): insufficient parameters")
+                .append(String.valueOf(command.getPositionOfInput()))
+                .append("): ")
+                .append(errorMessage)
                 .append(System.lineSeparator())
         ;
         writer.flush();

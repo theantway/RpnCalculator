@@ -71,7 +71,7 @@ public class CommandReader {
 
     private Command parseCommand(String commandStr, int startPos) {
         Command command = CommandFactory.commandFor(commandStr);
-        command.setPos(startPos);
+        command.setPositionOfInput(startPos);
 
         return command;
     }

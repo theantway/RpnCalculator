@@ -9,12 +9,12 @@ public abstract class AbstractCommand implements Command {
     private int pos;
 
     @Override
-    public int getPos() {
+    public int getPositionOfInput() {
         return pos;
     }
 
     @Override
-    public Command setPos(int pos) {
+    public Command setPositionOfInput(int pos) {
         this.pos = pos;
         return this;
     }

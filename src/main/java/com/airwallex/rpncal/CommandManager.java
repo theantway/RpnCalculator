@@ -28,14 +28,14 @@ public class CommandManager {
      * @param commands
      * @throws IOException
      */
-    public void executeCommands(List<Command> commands) throws IOException {
+    public void execute(List<Command> commands) throws IOException {
         for (Command command : commands) {
             if (!execute(command)) {
                 break;
             }
         }
 
-        printer.print(calculator);
+        printer.printCalculatorStack(calculator);
     }
 
     /**
@@ -70,7 +70,7 @@ public class CommandManager {
         int requiredOprands = command.requiredOperands();
 
         if (requiredOprands > calculator.size()) {
-            printer.printInsufficientError(command);
+            printer.printCommandError(command, "insufficient parameters");
             return false;
         }
 

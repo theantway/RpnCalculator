@@ -9,11 +9,11 @@ public final class CalculatorPrinterHelper {
     public static CalculatorPrinter noopPrinter() {
         return new CalculatorPrinter(){
             @Override
-            public void print(Calculator calculator) throws IOException {
+            public void printCalculatorStack(Calculator calculator) throws IOException {
             }
 
             @Override
-            public void printInsufficientError(Command command) {
+            public void printCommandError(Command command, String errorMessage) {
             }
         };
     }

@@ -18,7 +18,7 @@ public class OutputStreamCalculatorPrinterTest {
         CalculatorPrinter printer = new OutputStreamCalculatorPrinter(new OutputStreamWriter(stream));
 
         Calculator calculator = calculatorWithStack("1000000000.00", "1", "10.000", "1.1234567891123", "1.1234567891523");
-        printer.print(calculator);
+        printer.printCalculatorStack(calculator);
 
         assertThat(stream.toString(), Is.is("stack: 1000000000 1 10 1.1234567891 1.1234567892\n"));
     }

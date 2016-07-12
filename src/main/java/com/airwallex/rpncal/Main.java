@@ -33,7 +33,7 @@ public class Main {
                 break;
             }
 
-            commandManager.executeCommands(commands);
+            commandManager.execute(commands);
         }
     }
 

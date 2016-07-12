@@ -29,7 +29,7 @@ import static org.testng.Assert.assertTrue;
 public class CommandManagerTest {
     public void should_execute_command() throws IOException {
         Calculator calculator = new Calculator();
-        new CommandManager(calculator, noopPrinter()).executeCommands(asList(
+        new CommandManager(calculator, noopPrinter()).execute(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlaceCommand(new BigDecimal("1.1")),
                 new PlusCommand()
@@ -40,7 +40,7 @@ public class CommandManagerTest {
 
     public void should_execute_command_and_undo() throws IOException {
         Calculator calculator = new Calculator();
-        new CommandManager(calculator, noopPrinter()).executeCommands(asList(
+        new CommandManager(calculator, noopPrinter()).execute(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlaceCommand(new BigDecimal("1.1")),
                 new PlusCommand(),
@@ -63,7 +63,7 @@ public class CommandManagerTest {
     public void should_support_undo_only_when_execute_success() throws IOException {
         Calculator calculator = new Calculator();
         CommandManager commandManager = new CommandManager(calculator, noopPrinter());
-        commandManager.executeCommands(asList(
+        commandManager.execute(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlaceCommand(new BigDecimal("0")),
                 new DivideCommand()
@@ -79,7 +79,7 @@ public class CommandManagerTest {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         CalculatorPrinter printer = new OutputStreamCalculatorPrinter(new OutputStreamWriter(stream));
 
-        new CommandManager(calculator, printer).executeCommands(asList(
+        new CommandManager(calculator, printer).execute(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlusCommand(),
                 new PlaceCommand(new BigDecimal("1.1")),
@@ -93,21 +93,21 @@ public class CommandManagerTest {
     @DataProvider(name = "insufficientOperands")
     public Object[][] commandOperands() {
         return new Object[][]{
-                new Object[]{new PlusCommand().setPos(1), emptyList()},
-                new Object[]{new PlusCommand().setPos(2), asList("1")},
-                new Object[]{new MinusCommand().setPos(2), emptyList()},
-                new Object[]{new MinusCommand().setPos(2), asList("1")},
-                new Object[]{new MultiplyCommand().setPos(2), emptyList()},
-                new Object[]{new MultiplyCommand().setPos(2), asList("1")},
-                new Object[]{new DivideCommand().setPos(2), emptyList()},
-                new Object[]{new DivideCommand().setPos(2), asList("1")},
-                new Object[]{new SqrtCommand().setPos(2), emptyList()},
+                new Object[]{new PlusCommand().setPositionOfInput(1), emptyList()},
+                new Object[]{new PlusCommand().setPositionOfInput(2), asList("1")},
+                new Object[]{new MinusCommand().setPositionOfInput(2), emptyList()},
+                new Object[]{new MinusCommand().setPositionOfInput(2), asList("1")},
+                new Object[]{new MultiplyCommand().setPositionOfInput(2), emptyList()},
+                new Object[]{new MultiplyCommand().setPositionOfInput(2), asList("1")},
+                new Object[]{new DivideCommand().setPositionOfInput(2), emptyList()},
+                new Object[]{new DivideCommand().setPositionOfInput(2), asList("1")},
+                new Object[]{new SqrtCommand().setPositionOfInput(2), emptyList()},
         };
     }
 
     @Test(dataProvider = "insufficientOperands")
     public void should_check_oprand_count_before_execute_command(Command command, List<String> numbers) throws IOException {
-        int pos = command.getPos();
+        int pos = command.getPositionOfInput();
         String operator = CommandFactory.commandToString(command);
 
         Calculator calculator = new Calculator();

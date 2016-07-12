@@ -11,14 +11,14 @@ import static java.util.stream.Collectors.toList;
  * The Calculator class has a stack of current numbers, all the operations are based on these numbers.
  */
 public class Calculator {
-    private final Deque<BigDecimal> stack = new ArrayDeque<>();
+    private final Deque<BigDecimal> numberStack = new ArrayDeque<>();
 
     /**
      * check if there has numbers on stack
      * @return
      */
     public boolean hasMore() {
-        return stack.size() > 0;
+        return numberStack.size() > 0;
     }
 
     /**
@@ -26,14 +26,14 @@ public class Calculator {
      * @return
      */
     public BigDecimal pop() {
-        return stack.pop();
+        return numberStack.pop();
     }
     /**
      * return the top of the stack and DO NOT remove it from stack
      * @return
      */
     public BigDecimal peek() {
-        return stack.peek();
+        return numberStack.peek();
     }
 
     /**
@@ -41,7 +41,7 @@ public class Calculator {
      * @param number
      */
     public void push(BigDecimal number) {
-        stack.push(number);
+        numberStack.push(number);
     }
 
     /**
@@ -49,7 +49,7 @@ public class Calculator {
      * @return
      */
     public List<BigDecimal> stack() {
-        return stack.stream().collect(toList());
+        return numberStack.stream().collect(toList());
     }
 
     /**
@@ -57,6 +57,6 @@ public class Calculator {
      * @return
      */
     public int size() {
-        return stack.size();
+        return numberStack.size();
     }
 }
