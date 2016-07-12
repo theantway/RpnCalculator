@@ -20,12 +20,12 @@ public class Main {
         Calculator calculator = new Calculator();
         CommandReader commandReader = new CommandReader(new InputStreamReader(fileOrConsole(args), utf8));
         CalculatorPrinter printer = new OutputStreamCalculatorPrinter(new OutputStreamWriter(System.out, utf8));
-        CommandManager commandManager = new CommandManager(calculator, printer);
+        CommandExecutor commandExecutor = new CommandExecutor(calculator, printer);
 
-        executeCommands(commandReader, commandManager);
+        executeCommands(commandReader, commandExecutor);
     }
 
-    private static void executeCommands(CommandReader commandReader, CommandManager commandManager) throws IOException {
+    private static void executeCommands(CommandReader commandReader, CommandExecutor commandExecutor) throws IOException {
         while (true) {
             List<Command> commands = commandReader.nextCommands();
 
@@ -33,7 +33,7 @@ public class Main {
                 break;
             }
 
-            commandManager.execute(commands);
+            commandExecutor.execute(commands);
         }
     }
 

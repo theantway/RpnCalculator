@@ -13,12 +13,12 @@ import java.util.List;
 /**
  * Execute commandsHistory on calculator
  */
-public class CommandManager {
+public class CommandExecutor {
     private final Calculator calculator;
     private final CalculatorPrinter printer;
     private final Deque<Command> commandsHistory = new ArrayDeque<>();
 
-    public CommandManager(Calculator calculator, CalculatorPrinter printer) {
+    public CommandExecutor(Calculator calculator, CalculatorPrinter printer) {
         this.calculator = calculator;
         this.printer = printer;
     }

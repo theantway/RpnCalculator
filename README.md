@@ -13,10 +13,10 @@ Code Structures
 There are following classes:
 
 1. Command and XXXCommand: each operation is a Command class. Using TwoOperandsCommand as base class for + - * /
-2. CommandReader to read commands from input stream (file or command line)
-3. CommandFactory creates Command from string. This class maps command strings to Commands
-4. Calculator keeps a stack of executed commands
-5. CommandManager execute command on calculator, this class saves the execution history and able to undo commands.
+2. CommandReader to read commands from input stream (file or command line), split into words by white space
+3. CommandFactory creates Command from string.
+4. Calculator keeps a stack of numbers
+5. CommandExecutor execute command on calculator, this class saves the execution history and able to undo commands.
 6. CalculatorPrinter to print calculator stack and error messages
 
 
