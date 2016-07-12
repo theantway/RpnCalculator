@@ -2,7 +2,6 @@ package com.airwallex.rpncal.printer;
 
 import com.airwallex.rpncal.calculator.Calculator;
 import com.airwallex.rpncal.command.Command;
-import com.airwallex.rpncal.reader.CommandFactory;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -46,7 +45,7 @@ public class OutputStreamCalculatorPrinter implements CalculatorPrinter {
     @Override
     public void printCommandError(Command command, String errorMessage) throws IOException {
         writer.append("operator ")
-                .append(CommandFactory.commandToString(command))
+                .append(command.getOperator())
                 .append(" (position: ")
                 .append(String.valueOf(command.getPositionOfInput()))
                 .append("): ")

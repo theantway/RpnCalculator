@@ -19,6 +19,15 @@ public class PlaceCommand extends AbstractCommand {
         return 0;
     }
 
+    /**
+     * any number could be a place command
+     * @return
+     */
+    @Override
+    public String getOperator() {
+        return null;
+    }
+
     @Override
     public boolean execute(Calculator calculator) {
         calculator.push(number);

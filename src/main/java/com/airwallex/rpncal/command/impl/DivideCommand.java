@@ -38,4 +38,9 @@ public class DivideCommand extends TwoOperandsCommand{
             return firstNumber.divide(secondNumber, NUMBER_OF_DECIMAL_PLACES, RoundingMode.HALF_UP);
         }
     }
+
+    @Override
+    public String getOperator() {
+        return "/";
+    }
 }

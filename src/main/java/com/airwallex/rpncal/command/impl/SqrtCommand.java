@@ -21,6 +21,11 @@ public class SqrtCommand extends AbstractCommand{
     }
 
     @Override
+    public String getOperator() {
+        return "sqrt";
+    }
+
+    @Override
     public boolean execute(Calculator calculator) {
         number = calculator.pop();
 

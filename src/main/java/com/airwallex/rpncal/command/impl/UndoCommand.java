@@ -12,6 +12,11 @@ public class UndoCommand extends AbstractCommand {
     }
 
     @Override
+    public String getOperator() {
+        return "undo";
+    }
+
+    @Override
     public boolean execute(Calculator calculator) {
         return true;
     }

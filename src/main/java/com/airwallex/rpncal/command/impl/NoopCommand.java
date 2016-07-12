@@ -10,6 +10,11 @@ public class NoopCommand extends AbstractCommand{
     }
 
     @Override
+    public String getOperator() {
+        return "noop";
+    }
+
+    @Override
     public boolean execute(Calculator calculator) {
         return true;
     }

@@ -10,4 +10,9 @@ public class MinusCommand extends TwoOperandsCommand{
     protected BigDecimal calculate(BigDecimal firstNumber, BigDecimal secondNumber) {
         return firstNumber.subtract(secondNumber);
     }
+
+    @Override
+    public String getOperator() {
+        return "-";
+    }
 }

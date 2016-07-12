@@ -7,6 +7,12 @@ import com.airwallex.rpncal.calculator.Calculator;
  */
 public interface Command {
     /**
+     * the operator for command, e.g. + - * /
+     * @return
+     */
+    String getOperator();
+
+    /**
      * execute this command on given calculator
      * @param calculator
      */

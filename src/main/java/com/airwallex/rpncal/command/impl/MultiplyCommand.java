@@ -10,4 +10,9 @@ public class MultiplyCommand extends TwoOperandsCommand{
     protected BigDecimal calculate(BigDecimal firstNumber, BigDecimal secondNumber) {
         return firstNumber.multiply(secondNumber);
     }
+
+    @Override
+    public String getOperator() {
+        return "*";
+    }
 }

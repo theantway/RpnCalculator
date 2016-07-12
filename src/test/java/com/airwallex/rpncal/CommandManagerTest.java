@@ -5,7 +5,6 @@ import com.airwallex.rpncal.command.Command;
 import com.airwallex.rpncal.command.impl.*;
 import com.airwallex.rpncal.printer.CalculatorPrinter;
 import com.airwallex.rpncal.printer.OutputStreamCalculatorPrinter;
-import com.airwallex.rpncal.reader.CommandFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -106,9 +105,9 @@ public class CommandManagerTest {
     }
 
     @Test(dataProvider = "insufficientOperands")
-    public void should_check_oprand_count_before_execute_command(Command command, List<String> numbers) throws IOException {
+    public void should_check_operand_count_before_execute_command(Command command, List<String> numbers) throws IOException {
         int pos = command.getPositionOfInput();
-        String operator = CommandFactory.commandToString(command);
+        String operator = command.getOperator();
 
         Calculator calculator = new Calculator();
         for (String number : numbers) {

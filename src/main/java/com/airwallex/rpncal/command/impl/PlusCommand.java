@@ -10,4 +10,9 @@ public class PlusCommand extends TwoOperandsCommand{
     protected BigDecimal calculate(BigDecimal firstNumber, BigDecimal secondNumber) {
         return firstNumber.add(secondNumber);
     }
+
+    @Override
+    public String getOperator() {
+        return "+";
+    }
 }
