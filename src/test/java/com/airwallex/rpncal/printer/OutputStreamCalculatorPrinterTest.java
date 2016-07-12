@@ -8,7 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-import static com.airwallex.rpncal.CalculatorHelper.calculatorWithStack;
+import static com.airwallex.rpncal.calculator.CalculatorHelper.calculatorWithStack;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @Test

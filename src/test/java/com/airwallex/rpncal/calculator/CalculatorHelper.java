@@ -1,6 +1,4 @@
-package com.airwallex.rpncal;
-
-import com.airwallex.rpncal.calculator.Calculator;
+package com.airwallex.rpncal.calculator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

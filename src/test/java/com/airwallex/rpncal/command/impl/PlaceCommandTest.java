@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
-import static com.airwallex.rpncal.CalculatorHelper.numberList;
+import static com.airwallex.rpncal.calculator.CalculatorHelper.numberList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 

@@ -1,4 +1,4 @@
-package com.airwallex.rpncal;
+package com.airwallex.rpncal.executor;
 
 import com.airwallex.rpncal.calculator.Calculator;
 import com.airwallex.rpncal.command.Command;
@@ -14,7 +14,7 @@ import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.airwallex.rpncal.CalculatorHelper.numberList;
+import static com.airwallex.rpncal.calculator.CalculatorHelper.numberList;
 import static com.airwallex.rpncal.printer.CalculatorPrinterHelper.noopPrinter;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;

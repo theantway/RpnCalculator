@@ -3,8 +3,8 @@ package com.airwallex.rpncal.command.impl;
 import com.airwallex.rpncal.calculator.Calculator;
 import org.testng.annotations.Test;
 
-import static com.airwallex.rpncal.CalculatorHelper.calculatorWithStack;
-import static com.airwallex.rpncal.CalculatorHelper.numberList;
+import static com.airwallex.rpncal.calculator.CalculatorHelper.calculatorWithStack;
+import static com.airwallex.rpncal.calculator.CalculatorHelper.numberList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
