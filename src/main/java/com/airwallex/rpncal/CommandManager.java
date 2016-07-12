@@ -11,19 +11,26 @@ import java.util.Deque;
 import java.util.List;
 
 /**
- * Execute commands on calculator
+ * Execute commandsHistory on calculator
  */
 public class CommandManager {
-    private final Deque<Command> commands = new ArrayDeque<>();
+    private final Calculator calculator;
     private final CalculatorPrinter printer;
+    private final Deque<Command> commandsHistory = new ArrayDeque<>();
 
-    public CommandManager(CalculatorPrinter printer) {
+    public CommandManager(Calculator calculator, CalculatorPrinter printer) {
+        this.calculator = calculator;
         this.printer = printer;
     }
 
-    public void execute(Calculator calculator, List<Command> commands) throws IOException {
+    /**
+     * execute a list of commands
+     * @param commands
+     * @throws IOException
+     */
+    public void executeCommands(List<Command> commands) throws IOException {
         for (Command command : commands) {
-            if (!execute(calculator, command)) {
+            if (!execute(command)) {
                 break;
             }
         }
@@ -31,25 +38,40 @@ public class CommandManager {
         printer.print(calculator);
     }
 
-    public boolean execute(Calculator calculator, Command command) throws IOException {
+    /**
+     * Execute a command and save command to executed history
+     * @param command
+     * @return
+     * @throws IOException
+     */
+    public boolean execute(Command command) throws IOException {
         if (command instanceof UndoCommand) {
-            if (commands.size() > 0) {
-                Command undoCommand = commands.pop();
+            if (commandsHistory.size() > 0) {
+                Command undoCommand = commandsHistory.pop();
                 undoCommand.undo(calculator);
             }
 
             return true;
         }
 
-        int requiredOprands = command.requiredOperands();
-        if (requiredOprands > calculator.size()) {
-            printer.printInsufficientError(command);
+        if (!validate(command)) {
             return false;
         }
 
         //only add command to undo stack if it executed successful
         if (command.execute(calculator)) {
-            commands.push(command);
+            commandsHistory.push(command);
+        }
+
+        return true;
+    }
+
+    private boolean validate(Command command) throws IOException {
+        int requiredOprands = command.requiredOperands();
+
+        if (requiredOprands > calculator.size()) {
+            printer.printInsufficientError(command);
+            return false;
         }
 
         return true;

@@ -29,7 +29,7 @@ import static org.testng.Assert.assertTrue;
 public class CommandManagerTest {
     public void should_execute_command() throws IOException {
         Calculator calculator = new Calculator();
-        new CommandManager(noopPrinter()).execute(calculator, asList(
+        new CommandManager(calculator, noopPrinter()).executeCommands(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlaceCommand(new BigDecimal("1.1")),
                 new PlusCommand()
@@ -40,7 +40,7 @@ public class CommandManagerTest {
 
     public void should_execute_command_and_undo() throws IOException {
         Calculator calculator = new Calculator();
-        new CommandManager(noopPrinter()).execute(calculator, asList(
+        new CommandManager(calculator, noopPrinter()).executeCommands(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlaceCommand(new BigDecimal("1.1")),
                 new PlusCommand(),
@@ -52,7 +52,7 @@ public class CommandManagerTest {
 
     public void should_ignore_undo_command_when_no_history() throws IOException {
         Calculator calculator = new Calculator();
-        boolean result = new CommandManager(noopPrinter()).execute(calculator,
+        boolean result = new CommandManager(calculator, noopPrinter()).execute(
                 new UndoCommand()
         );
 
@@ -62,15 +62,15 @@ public class CommandManagerTest {
 
     public void should_support_undo_only_when_execute_success() throws IOException {
         Calculator calculator = new Calculator();
-        CommandManager commandManager = new CommandManager(noopPrinter());
-        commandManager.execute(calculator, asList(
+        CommandManager commandManager = new CommandManager(calculator, noopPrinter());
+        commandManager.executeCommands(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlaceCommand(new BigDecimal("0")),
                 new DivideCommand()
         ));
 
         assertThat(calculator.stack(), equalTo(numberList("0", "123.45")));
-        commandManager.execute(calculator, new UndoCommand());
+        commandManager.execute(new UndoCommand());
         assertThat(calculator.stack(), equalTo(numberList("123.45")));
     }
 
@@ -79,7 +79,7 @@ public class CommandManagerTest {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         CalculatorPrinter printer = new OutputStreamCalculatorPrinter(new OutputStreamWriter(stream));
 
-        new CommandManager(printer).execute(calculator, asList(
+        new CommandManager(calculator, printer).executeCommands(asList(
                 new PlaceCommand(new BigDecimal("123.45")),
                 new PlusCommand(),
                 new PlaceCommand(new BigDecimal("1.1")),
@@ -118,7 +118,7 @@ public class CommandManagerTest {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         CalculatorPrinter printer = new OutputStreamCalculatorPrinter(new OutputStreamWriter(stream));
 
-        boolean result = new CommandManager(printer).execute(calculator, command);
+        boolean result = new CommandManager(calculator, printer).execute(command);
 
         assertFalse(result);
         assertThat(stream.toString(), containsString("operator " + operator + " (position: " + pos + "): insufficient parameters"));

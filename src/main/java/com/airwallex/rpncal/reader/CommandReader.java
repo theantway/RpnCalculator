@@ -28,17 +28,16 @@ public class CommandReader {
      * @throws IOException
      */
     public List<Command> nextCommands() throws IOException {
-        String line = null;
         try {
-            line = reader.readLine();
+            String line = reader.readLine();
             if (line == null) {
                 //end of file
                 return null;
             }
 
             return parseLine(line.trim());
-        } catch (IOException | IllegalArgumentException e) {
-            logger.warn("exception which occurred during read command: " + line);
+        } catch (IOException e) {
+            logger.warn("exception which occurred during read command", e);
 
             throw new RuntimeException(e);
         }
@@ -57,19 +56,20 @@ public class CommandReader {
         for (pos = 0; pos < line.length(); pos++) {
             if (line.charAt(pos) == ' ') {
                 if (startPos != pos) {
-                    commands.add(parseCommand(line, startPos, pos));
+                    String command = line.substring(startPos, pos);
+                    commands.add(parseCommand(command, startPos));
                 }
 
                 startPos = pos + 1;
             }
         }
 
-        commands.add(parseCommand(line, startPos, pos));
+        String command = line.substring(startPos, pos);
+        commands.add(parseCommand(command, startPos));
         return commands;
     }
 
-    private Command parseCommand(String line, int startPos, int endPos) {
-        String commandStr = line.substring(startPos, endPos);
+    private Command parseCommand(String commandStr, int startPos) {
         Command command = CommandFactory.commandFor(commandStr);
         command.setPos(startPos);
 

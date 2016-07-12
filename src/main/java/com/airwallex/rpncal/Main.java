@@ -17,11 +17,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Charset utf8 = Charset.forName("utf-8");
 
+        Calculator calculator = new Calculator();
         CommandReader commandReader = new CommandReader(new InputStreamReader(fileOrConsole(args), utf8));
         CalculatorPrinter printer = new OutputStreamCalculatorPrinter(new OutputStreamWriter(System.out, utf8));
-        CommandManager commandManager = new CommandManager(printer);
-        Calculator calculator = new Calculator();
+        CommandManager commandManager = new CommandManager(calculator, printer);
 
+        executeCommands(commandReader, commandManager);
+    }
+
+    private static void executeCommands(CommandReader commandReader, CommandManager commandManager) throws IOException {
         while (true) {
             List<Command> commands = commandReader.nextCommands();
 
@@ -29,7 +33,7 @@ public class Main {
                 break;
             }
 
-            commandManager.execute(calculator, commands);
+            commandManager.executeCommands(commands);
         }
     }
 
