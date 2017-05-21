@@ -125,16 +125,6 @@
         </plugins>
     </build>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.9</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <dependencyManagement>
         <dependencies>
             <!--Dependencies for tests start-->

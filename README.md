@@ -4,7 +4,7 @@ Programming Exercise – RPN Calculator Solution
 Code Quality
 ------------
 - Using TestNG for unit tests.
-- Using Jacoco for code coverage. The code coverage report can be found at target/site/jacoco after mvn test.
+- Using Jacoco for code coverage. The code coverage report can be found at target/site/jacoco after running command: mvn package.
 - Using FindBugs for code quality.
 
 

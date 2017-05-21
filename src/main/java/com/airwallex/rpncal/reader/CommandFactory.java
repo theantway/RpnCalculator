@@ -11,7 +11,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Create Command from user input. maps input string to command
+ * Create Command object from string
  */
 public class CommandFactory {
     private static final Logger logger = LoggerFactory.getLogger(CommandFactory.class);

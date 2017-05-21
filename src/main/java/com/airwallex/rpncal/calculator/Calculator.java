@@ -2,10 +2,9 @@ package com.airwallex.rpncal.calculator;
 
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-
-import static java.util.stream.Collectors.toList;
 
 /**
  * The Calculator class has a stack of current numbers, all the operations are based on these numbers.
@@ -49,7 +48,7 @@ public class Calculator {
      * @return
      */
     public List<BigDecimal> stack() {
-        return numberStack.stream().collect(toList());
+        return new ArrayList<>(numberStack);
     }
 
     /**
